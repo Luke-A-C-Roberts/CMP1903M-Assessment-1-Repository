@@ -18,32 +18,31 @@ namespace CMP1903M_Assessment_1
         public void manualTextInput()
         {
             bool isCorrectInput = false;
+            string tempText = "";
             while (isCorrectInput == false)
             {
                 Console.Write("Enter Text input for analysis\n>");
-                text = Console.ReadLine();
-                if (text != null || text == "")
+                tempText = Console.ReadLine();
+                if (tempText != null && tempText != "")
                 {
-                    isCorrectInput = true;
                     Console.Write("do you want to enter this text? [y/n] ");
                     if (Console.ReadLine() != "n")
                     {
                         Console.WriteLine("press any key to continue");
-                        Console.ReadLine();
-                        Console.Clear();
+                        Console.ReadLine(); Console.Clear();
+                        text = tempText;
+                        isCorrectInput = true;
                     }
                     else
                     {
                         Console.WriteLine("press any key to continue");
-                        Console.ReadLine();
-                        Console.Clear();
+                        Console.ReadLine(); Console.Clear();
                     }
                 }
                 else
                 {
                     Console.WriteLine("please renter text, press any key to continue");
-                    Console.ReadLine();
-                    Console.Clear();
+                    Console.ReadLine(); Console.Clear();
                 }
             }
         }
@@ -54,7 +53,6 @@ namespace CMP1903M_Assessment_1
         //Gets text input from a .txt file
         public string fileTextInput(string fileName)
         {
-
             return text;
         }
 
