@@ -22,8 +22,11 @@ namespace CMP1903M_Assessment_1
             while (isCorrectInput == false)
             {
                 Console.Write("Enter Text input for analysis\n>");
+                // Converting null literal or possible null value to non-nullable type.
+                #pragma warning disable CS8600
                 tempText = Console.ReadLine();
-                if (tempText != null && tempText != "")
+                #pragma warning restore CS8600
+                if (tempText != "")
                 {
                     Console.Write("do you want to enter this text? [y/n] ");
                     if (Console.ReadLine() != "n")
