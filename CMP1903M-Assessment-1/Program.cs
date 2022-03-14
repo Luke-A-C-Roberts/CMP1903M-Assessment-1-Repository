@@ -17,7 +17,7 @@ namespace CMP1903M_Assessment_1
             //Create 'Input' object
             //Get either manually entered text, or text from a file
             Input inputObject = new Input();
-            inputObject.manualTextInput();
+            inputObject.fileTextInput();
             Console.WriteLine(inputObject.text);
 
             //Create an 'Analyse' object
