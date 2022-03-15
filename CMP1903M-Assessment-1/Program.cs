@@ -18,32 +18,33 @@ namespace CMP1903M_Assessment_1
             //Get either manually entered text, or text from a file
             Input inputObject = new Input();
 
-            bool isCorrectInputChoice = false;
+            bool isAllowedInputChoice = false;
             string inputChoice = "";
-            while (isCorrectInputChoice == false)
+            while (isAllowedInputChoice == false)
             {
-                Console.WriteLine("Do you want manual [m] or text file [f] input");
+                Console.Write("1. Do you want to enter the text via the keyboard?\n" +
+                    "2.Do you want to read in the text from a file?\n> ");
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 inputChoice = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-                if (inputChoice == "m" || inputChoice == "f" || inputChoice == "manual" || inputChoice == "text file")
+                if (inputChoice == "1" || inputChoice == "2")
                 {
-                    isCorrectInputChoice = true;
+                    isAllowedInputChoice = true;
                     Console.WriteLine("Press any key to continue");
                     Console.ReadLine(); Console.Clear();
                 }
                 else
                 {
-                    Console.WriteLine("Please re-enter input method");
+                    Console.WriteLine("Please re-enter choice");
                     Console.WriteLine("Press any key to continue");
                     Console.ReadLine(); Console.Clear();
                 }
             }
-            if (inputChoice == "m" || inputChoice == "manual")
+            if (inputChoice == "1")
             {
                 inputObject.manualTextInput();
             }
-            else if (inputChoice == "f" || inputChoice == "text file")
+            else if (inputChoice == "2")
             {
                 inputObject.fileTextInput();
             }
