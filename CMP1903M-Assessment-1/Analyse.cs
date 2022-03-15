@@ -19,7 +19,7 @@ namespace CMP1903M_Assessment_1
         public Analyse()
         {
             //Initialise all the values in the list to '0'
-            for (int i = 0; i < 5; i++) { values.Add(0); }
+            for (int i = 0; i < 6; i++) { values.Add(0); }
         }
         public List<int> analyseText(string input)
         {
@@ -31,6 +31,7 @@ namespace CMP1903M_Assessment_1
             //5. Number of lower case letters
 
             int characterCode = 0;
+            int textLength = 0;
 
             foreach (char character in input)
             {
@@ -55,8 +56,18 @@ namespace CMP1903M_Assessment_1
                 else if (characterCode >= 97 && characterCode <= 122)
                 {
                     values[4]++;
-                }    
-
+                }
+            }
+            
+            foreach (char c in input)
+            {
+                if (c != ' ' && c != '.' && c != ','
+                    && c != '!' && c != '?' && c != ':'
+                    && c != ';' && c != '\'' && c != '\"'
+                    && c != '*')
+                {
+                    values[5]++;
+                }
             }
             return values;
         }
