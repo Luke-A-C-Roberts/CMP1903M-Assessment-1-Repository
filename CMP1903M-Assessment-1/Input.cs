@@ -26,10 +26,14 @@ namespace CMP1903M_Assessment_1
             {
                 Console.Write(">");
                 tempSentence = Console.ReadLine();
-                Console.Write("\n");
-                if (tempSentence != "" && tempSentence != "*")
+                Console.Write("");
+                if (tempSentence != "")
                 {
-                    if (tempSentence.EndsWith(". ")
+                    if (tempSentence != "*")
+                    {
+                        tempText += tempSentence;
+                    }
+                    else if (tempSentence.EndsWith(". ")
                         || tempSentence.EndsWith(".*")
                         || tempSentence.EndsWith("! ")
                         || tempSentence.EndsWith("!*")
@@ -85,7 +89,7 @@ namespace CMP1903M_Assessment_1
                     if (Console.ReadLine() != "n")
                     {
                         hasFoundFile = true;
-                        text = System.IO.File.ReadAllText(fileName);
+                        text = System.IO.File.ReadAllText(fileName) + "*";
                         Console.WriteLine("Press any key to continue");
                         Console.ReadLine(); Console.Clear();
                     }
@@ -98,7 +102,7 @@ namespace CMP1903M_Assessment_1
                 else
                 {
                     if (System.IO.File.Exists(fileName) == false) { Console.WriteLine("file could not be found"); }
-                    if (fileName.EndsWith(".txt") == true) { Console.WriteLine("the file provided was not a .txt file"); }
+                    if (fileName.EndsWith(".txt") == false) { Console.WriteLine("the file provided was not a .txt file"); }
                     Console.WriteLine("Press any key to continue");
                     Console.ReadLine(); Console.Clear();
                 }
