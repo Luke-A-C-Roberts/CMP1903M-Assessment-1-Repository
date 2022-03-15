@@ -10,50 +10,55 @@ namespace CMP1903M_Assessment_1
     {
         //Handles the text input for Assessment 1
         internal string text = "";
+        internal int sentenceNumber = 0;
         //Method: manualTextInput
         //Arguments: none
         //Returns: string
         //Gets text input from the keyboard
         public string manualTextInput()
         {
-            bool allowInput = false;
             string tempText = "";
-            while (allowInput == false)
+            string tempSentence = "";
+            bool contiueLoop = true;
+            Console.WriteLine("Please enter text\n" +
+                "if you have finished entering sentences end with \"*\" character");
+            while (contiueLoop == true)
             {
-                Console.Write("Enter Text input for analysis\n> ");
-                // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8600
-                tempText = Console.ReadLine();
-#pragma warning restore CS8600
-                if (tempText != "")
+                Console.Write(">");
+                tempSentence = Console.ReadLine();
+                Console.Write("\n");
+                if (tempSentence != "" && tempSentence != "*")
                 {
-                    Console.Write("Are you sure you want to enter this text [y/n]? ");
-                    if (Console.ReadLine() != "n")
+                    if (tempSentence.EndsWith(". ")
+                        || tempSentence.EndsWith(".*")
+                        || tempSentence.EndsWith("! ")
+                        || tempSentence.EndsWith("!*")
+                        || tempSentence.EndsWith("? ")
+                        || tempSentence.EndsWith("?*"))
                     {
-                        Console.WriteLine("Press any key to continue");
-                        Console.ReadLine(); Console.Clear();
-                        // Possible null reference assignment.
-#pragma warning disable CS8601
-                        text = tempText;
-#pragma warning restore CS8601
-                        allowInput = true;
-#pragma warning disable CS8603 // Possible null reference return.
-                        return text;
-#pragma warning restore CS8603 // Possible null reference return.
+                        tempText += tempSentence;
+                    }
+                    else if (tempSentence.EndsWith(".")
+                        || tempSentence.EndsWith("!")
+                        || tempSentence.EndsWith("?"))
+                    {
+                        tempText += (tempSentence + " ");
                     }
                     else
                     {
+                        tempText += (tempSentence + ". ");
+                    }
+
+                    if (tempSentence.EndsWith("*"))
+                    {
+                        contiueLoop = false;
                         Console.WriteLine("Press any key to continue");
                         Console.ReadLine(); Console.Clear();
                     }
                 }
-                else
-                {
-                    Console.WriteLine("please renter text, press any key to continue");
-                    Console.ReadLine(); Console.Clear();
-                }
             }
-            return "";
+            text = tempText;
+            return tempText;
         }
         //Method: fileTextInput
         //Arguments: string (the file path)

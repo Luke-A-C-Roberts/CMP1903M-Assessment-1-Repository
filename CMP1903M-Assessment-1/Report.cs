@@ -24,7 +24,7 @@ namespace CMP1903M_Assessment_1
                 }
             }
             Console.WriteLine(
-                text + "*\n\n\n*Testdata:\n" +
+                text + "\n\n\n*Testdata:\n" +
                 $"Sentances:\t\t{values[0]}\n" +
                 $"Total Characters:\t{textLength}\n" +
                 $"Vowels:\t\t\t{values[1]}\n" +

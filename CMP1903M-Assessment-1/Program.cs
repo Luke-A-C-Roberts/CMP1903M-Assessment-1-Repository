@@ -23,7 +23,7 @@ namespace CMP1903M_Assessment_1
             while (isAllowedInputChoice == false)
             {
                 Console.Write("1. Do you want to enter the text via the keyboard?\n" +
-                    "2.Do you want to read in the text from a file?\n> ");
+                    "2. Do you want to read in the text from a file?\n> ");
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 inputChoice = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
