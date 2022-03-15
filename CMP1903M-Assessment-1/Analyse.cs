@@ -31,7 +31,6 @@ namespace CMP1903M_Assessment_1
             //5. Number of lower case letters
 
             int characterCode = 0;
-            int textLength = 0;
 
             foreach (char character in input)
             {

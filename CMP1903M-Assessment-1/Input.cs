@@ -25,7 +25,9 @@ namespace CMP1903M_Assessment_1
             while (contiueLoop == true)
             {
                 Console.Write(">");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 tempSentence = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 Console.Write("");
                 if (tempSentence != "")
                 {
@@ -53,12 +55,14 @@ namespace CMP1903M_Assessment_1
                         tempText += (tempSentence + ". ");
                     }
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     if (tempSentence.EndsWith("*"))
                     {
                         contiueLoop = false;
                         Console.WriteLine("Press any key to continue");
                         Console.ReadLine(); Console.Clear();
                     }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
             }
             text = tempText;
@@ -85,7 +89,7 @@ namespace CMP1903M_Assessment_1
                 if (System.IO.File.Exists(fileName) == true
                     && fileName.EndsWith(".txt") == true)
                 {
-                    Console.WriteLine("Are you sure you want to use this file [y/n]? ");
+                    Console.Write("Are you sure you want to use this file [y/n]? ");
                     if (Console.ReadLine() != "n")
                     {
                         hasFoundFile = true;
