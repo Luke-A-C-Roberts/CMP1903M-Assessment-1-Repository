@@ -37,7 +37,9 @@ namespace CMP1903M_Assessment_1
                         text = tempText;
 #pragma warning restore CS8601
                         allowInput = true;
+#pragma warning disable CS8603 // Possible null reference return.
                         return text;
+#pragma warning restore CS8603 // Possible null reference return.
                     }
                     else
                     {
