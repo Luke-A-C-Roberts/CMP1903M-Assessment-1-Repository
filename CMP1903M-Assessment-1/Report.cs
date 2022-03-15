@@ -25,12 +25,13 @@ namespace CMP1903M_Assessment_1
             }
             Console.WriteLine(
                 text + "*\n\n\n*Testdata:\n" +
-                $"Sentances:\t{values[0]}\n" +
+                $"Sentances:\t\t{values[0]}\n" +
                 $"Total Characters:\t{textLength}\n" +
-                $"Vowels:\t{values[1]}\n" +
-                $"Consonants:\t{values[2]}\n" +
-                $"Upper Case:\t{values[3]}\n" +
-                $"Lower Case:\t{values[4]}"
+                $"Vowels:\t\t\t{values[1]}\n" +
+                $"Consonants:\t\t{values[2]}\n" +
+                $"Upper Case:\t\t{values[3]}\n" +
+                $"Lower Case:\t\t{values[4]}" +
+                "\n\n*Doesn't include punctuation or whitespaces between words."
                 );
         }
     }
