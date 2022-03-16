@@ -53,12 +53,11 @@ namespace CMP1903M_Assessment_1
             //Pass the text input to the 'analyseText' method
             //Receive a list of integers back
             Analyse analysis = new Analyse();
-            List<int> mainValues = new List<int>();
-            mainValues = analysis.analyseText(inputObject.text);
+            parameters = analysis.analyseText(inputObject.text);
 
             //Report the results of the analysis
             Report report = new Report();
-            report.outputConsole(inputObject.text, mainValues);
+            report.outputConsole(inputObject.text, parameters);
 
             //TO ADD: Get the frequency of individual letters?
         }

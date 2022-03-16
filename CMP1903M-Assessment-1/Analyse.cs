@@ -30,7 +30,9 @@ namespace CMP1903M_Assessment_1
             //4. Number of upper case letters
             //5. Number of lower case letters
 
-            int characterCode = 0;
+            //6. Number of characters
+
+            int characterCode = default;
 
             foreach (char character in input)
             {
@@ -44,6 +46,8 @@ namespace CMP1903M_Assessment_1
                 {
                     values[1]++;
                 }
+                //since upper and lower are accounted for: charactercount = upper + lower
+                //remove values[6]
                 else if ((characterCode >= 65 && characterCode <= 90) || (characterCode >= 97 && characterCode <= 122))
                 {
                     values[2]++;
@@ -58,12 +62,12 @@ namespace CMP1903M_Assessment_1
                 }
             }
             
-            foreach (char c in input)
+            foreach (char character in input)
             {
-                if (c != ' ' && c != '.' && c != ','
-                    && c != '!' && c != '?' && c != ':'
-                    && c != ';' && c != '\'' && c != '\"'
-                    && c != '*')
+                if (character != ' ' && character != '.' && character != ','
+                    && character != '!' && character != '?' && character != ':'
+                    && character != ';' && character != '\'' && character != '\"'
+                    && character != '*')
                 {
                     values[5]++;
                 }
