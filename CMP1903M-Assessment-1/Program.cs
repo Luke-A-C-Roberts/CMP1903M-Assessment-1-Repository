@@ -60,6 +60,7 @@ namespace CMP1903M_Assessment_1
             report.outputConsole(inputObject.text, parameters);
 
             //TO ADD: Get the frequency of individual letters?
+
         }
     }
 }

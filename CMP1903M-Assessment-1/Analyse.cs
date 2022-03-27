@@ -14,6 +14,7 @@ namespace CMP1903M_Assessment_1
         //Arguments: string
         //Returns: list of integers
         //Calculates and returns an analysis of the text
+        readonly char[] vowels = { 'a', 'i', 'u', 'e', 'o' };
 
         List<int> values = new List<int>();
         public Analyse()
@@ -30,48 +31,20 @@ namespace CMP1903M_Assessment_1
             //4. Number of upper case letters
             //5. Number of lower case letters
 
-            //6. Number of characters
-
-            int characterCode = default;
+            string[] sentanceList = input.Remove('*').Split('.', '!', '?');
+            values[0] = sentanceList.Length;
 
             foreach (char character in input)
             {
-                characterCode = System.Convert.ToInt32(character);
-                if (character == '.' || character == '?' || character == '!')
-                {
-                    values[0]++;
-                }
-                if (character == 'A' || character == 'E' || character == 'I' || character == 'U' || character == 'O' ||
-                    character == 'a' || character == 'e' || character == 'i' || character == 'u' || character == 'o')
-                {
-                    values[1]++;
-                }
-                //since upper and lower are accounted for: charactercount = upper + lower
-                //remove values[6]
-                else if ((characterCode >= 65 && characterCode <= 90) || (characterCode >= 97 && characterCode <= 122))
-                {
-                    values[2]++;
-                }
-                if (characterCode >= 65 && characterCode <= 90)
-                {
-                    values[3]++;
-                }
-                else if (characterCode >= 97 && characterCode <= 122)
-                {
-                    values[4]++;
-                }
+                if (vowels.Contains(char.ToLower(character)))                       { values[1]++; }
+                else if (char.IsLetter(character) && !(vowels.Contains(character))) { values[2]++; }
+
+                if (char.IsUpper(character) && char.IsLetter(character))            { values[3]++; }
+                else if (char.IsLower(character) && char.IsLetter(character))       { values[4]++; }
             }
-            
-            foreach (char character in input)
-            {
-                if (character != ' ' && character != '.' && character != ','
-                    && character != '!' && character != '?' && character != ':'
-                    && character != ';' && character != '\'' && character != '\"'
-                    && character != '*')
-                {
-                    values[5]++;
-                }
-            }
+
+            values[5] = values[4] + values[3];
+
             return values;
         }
     }
