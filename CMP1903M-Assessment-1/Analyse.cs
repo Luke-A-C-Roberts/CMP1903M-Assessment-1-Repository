@@ -31,11 +31,10 @@ namespace CMP1903M_Assessment_1
             //4. Number of upper case letters
             //5. Number of lower case letters
 
-            string[] sentanceList = input.Remove('*').Split('.', '!', '?');
-            values[0] = sentanceList.Length;
-
             foreach (char character in input)
             {
+                if (character == '.' || character == '!' || character == '?')       { values[0]++; }
+
                 if (vowels.Contains(char.ToLower(character)))                       { values[1]++; }
                 else if (char.IsLetter(character) && !(vowels.Contains(character))) { values[2]++; }
 

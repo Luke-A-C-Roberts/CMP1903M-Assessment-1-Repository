@@ -24,46 +24,55 @@ namespace CMP1903M_Assessment_1
                 "if you have finished entering sentences end with \"*\" character");
             while (contiueLoop == true)
             {
+
                 Console.Write(">");
+
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 tempSentence = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
                 Console.Write("");
-                if (tempSentence != "")
+                if (!(tempSentence == "" && tempSentence == null))
                 {
-                    if (tempSentence != "*")
+                    if (tempSentence == "*")
                     {
                         tempText += tempSentence;
-                    }
-                    else if (tempSentence.EndsWith(". ")
-                        || tempSentence.EndsWith(".*")
-                        || tempSentence.EndsWith("! ")
-                        || tempSentence.EndsWith("!*")
-                        || tempSentence.EndsWith("? ")
-                        || tempSentence.EndsWith("?*"))
-                    {
-                        tempText += tempSentence;
-                    }
-                    else if (tempSentence.EndsWith(".")
-                        || tempSentence.EndsWith("!")
-                        || tempSentence.EndsWith("?"))
-                    {
-                        tempText += (tempSentence + " ");
+                        contiueLoop = false;
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine(); Console.Clear();
                     }
                     else
                     {
-                        tempText += (tempSentence + ". ");
+                        if (tempText.EndsWith(". ") || tempText.EndsWith("! ") || tempText.EndsWith("? "))
+                        {
+                            tempText += tempSentence;
+                        }
+                        else if (tempText.EndsWith(".") || tempText.EndsWith("!") || tempText.EndsWith("?"))
+                        {
+                            tempText += (" " + tempSentence);
+                        }
+                        else if (tempText.Length > 0)
+                        {
+                            tempText += (". " + tempSentence);
+                        }
+                        else
+                        {
+                            tempText += tempSentence;
+                        }
+
                     }
 
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     if (tempSentence.EndsWith("*"))
                     {
                         contiueLoop = false;
-                        Console.WriteLine("Press any key to continue");
+                        Console.WriteLine("Press Enter to continue");
                         Console.ReadLine(); Console.Clear();
                     }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
+            }
+            if (!(tempText.EndsWith(".*") || tempText.EndsWith("!*") || tempText.EndsWith("?*")))
+            {
+                tempText = tempText.Remove(tempText.Length - 1) + ".*"; 
             }
             text = tempText;
             return tempText;
@@ -94,12 +103,12 @@ namespace CMP1903M_Assessment_1
                     {
                         hasFoundFile = true;
                         text = System.IO.File.ReadAllText(fileName) + "*";
-                        Console.WriteLine("Press any key to continue");
+                        Console.WriteLine("Press Enter to continue");
                         Console.ReadLine(); Console.Clear();
                     }
                     else
                     {
-                        Console.WriteLine("Press any key to continue");
+                        Console.WriteLine("Press Enter to continue");
                         Console.ReadLine(); Console.Clear();
                     }
                 }
@@ -107,7 +116,7 @@ namespace CMP1903M_Assessment_1
                 {
                     if (System.IO.File.Exists(fileName) == false) { Console.WriteLine("file could not be found"); }
                     if (fileName.EndsWith(".txt") == false) { Console.WriteLine("the file provided was not a .txt file"); }
-                    Console.WriteLine("Press any key to continue");
+                    Console.WriteLine("Press Enter to continue");
                     Console.ReadLine(); Console.Clear();
                 }
 #pragma warning restore CS8602

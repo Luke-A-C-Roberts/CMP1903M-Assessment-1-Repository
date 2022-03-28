@@ -30,13 +30,13 @@ namespace CMP1903M_Assessment_1
                 if (inputChoice == "1" || inputChoice == "2")
                 {
                     isAllowedInputChoice = true;
-                    Console.WriteLine("Press any key to continue");
+                    Console.WriteLine("Press Enter to continue");
                     Console.ReadLine(); Console.Clear();
                 }
                 else
                 {
                     Console.WriteLine("Please re-enter choice");
-                    Console.WriteLine("Press any key to continue");
+                    Console.WriteLine("Press Enter to continue");
                     Console.ReadLine(); Console.Clear();
                 }
             }
