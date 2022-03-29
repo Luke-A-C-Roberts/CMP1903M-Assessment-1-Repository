@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_Assessment_1
 {
-    public class LQ
+    public struct LQ
     {
         private char _letter;
         private int _quantity;
@@ -21,6 +21,6 @@ namespace CMP1903M_Assessment_1
         {
             get { return _quantity; }
             set { _quantity = value; }
-        }
+        } 
     }
 }

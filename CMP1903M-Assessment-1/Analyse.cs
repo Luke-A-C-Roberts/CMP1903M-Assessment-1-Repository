@@ -56,15 +56,21 @@ namespace CMP1903M_Assessment_1
             HashSet<char> letterSet = new HashSet<char> ();
             foreach (char character in input)
             {
-                if (char.IsLetter(character))
+                if (char.IsLetter(character) == true)
                 {
-                    letterSet.Add(character);
+                    letterSet.Add(char.ToLower(character));
                 }
             }
 
             List<char> letterList = new List<char> ();
-            letterList = letterList.ToList();
+            letterList = letterSet.ToList();
             letterList.Sort();
+
+            foreach(char l in letterSet)
+            {
+                Console.Write($"{l}, ");
+            }
+            Console.WriteLine();
 
             List<int> letterAmmountList = new List<int> ();
 
@@ -90,7 +96,7 @@ namespace CMP1903M_Assessment_1
             }
 
             tempLQ = new LQ();
-2
+
             bool doSortLoop = true;
             while (doSortLoop == true)
             {
@@ -102,6 +108,7 @@ namespace CMP1903M_Assessment_1
                         tempLQ = lqs[i];
                         lqs[i] = lqs[i + 1];
                         lqs[i + 1] = tempLQ;
+                        doSortLoop = true;
                     }
                 }
             }

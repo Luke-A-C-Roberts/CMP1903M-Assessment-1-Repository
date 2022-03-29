@@ -11,11 +11,9 @@ namespace CMP1903M_Assessment_1
     {
         static void Main()
         {
-            //Local list of integers to hold the first five measurements of the text
             List<int> parameters = new List<int>();
-            
-            //Create 'Input' object
-            //Get either manually entered text, or text from a file
+            List<LQ> lqs = new List<LQ>();
+
             Input inputObject = new Input();
 
             string inputChoice = "";
@@ -50,18 +48,12 @@ namespace CMP1903M_Assessment_1
                 inputObject.fileTextInput();
             }
 
-            //Create an 'Analyse' object
-            //Pass the text input to the 'analyseText' method
-            //Receive a list of integers back
             Analyse analysis = new Analyse();
             parameters = analysis.AnalyseText(inputObject.text);
-
-            //Report the results of the analysis
+            lqs = analysis.AnalyseLetters(inputObject.text);
+            
             Report report = new Report();
-            report.sentanceStatisticsOutput(inputObject.text, parameters);
-
-            //TO ADD: Get the frequency of individual letters?
-
+            report.sentanceStatisticsOutput(inputObject.text, parameters, lqs);
         }
     }
 }
