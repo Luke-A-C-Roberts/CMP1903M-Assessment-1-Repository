@@ -11,7 +11,7 @@ namespace CMP1903M_Assessment_1
         //Handles the reporting of the analysis
         //Maybe have different methods for different formats of output?
         //eg.   public void outputConsole(List<int>)
-        public void outputConsole(string text, List<int> values)
+        public void sentanceStatisticsOutput(string text, List<int> values)
         {
             
             Console.WriteLine
@@ -25,6 +25,10 @@ namespace CMP1903M_Assessment_1
                 $"Lower Case:\t\t{values[4]}" +
                 "\n\n*Doesn't include punctuation or whitespaces between words."
                 );
+        }
+        public void characterStatisticsOutput(LQ lqs)
+        {
+
         }
     }
 }
