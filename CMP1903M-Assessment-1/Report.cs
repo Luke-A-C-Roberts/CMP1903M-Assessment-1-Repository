@@ -67,18 +67,30 @@ namespace CMP1903M_Assessment_1
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                     path = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-                    try
+                    Console.Write("Are you sure you want to use this file [y/n]? ");
+
+                    // asks for users consent
+                    if (Console.ReadLine() != "n")
                     {
-                        System.IO.File.WriteAllText(path, outputString);
-                        break;
+                        try
+                        {
+                            System.IO.File.WriteAllText(path, outputString);
+                            break;
+                        }
+                        catch (System.IO.IOException e)
+                        {
+                            Console.WriteLine($"exception {e}");
+                            Console.WriteLine("Press Enter to continue");
+                            Console.ReadLine(); Console.Clear();
+                        }
                     }
-                    catch (System.IO.IOException e)
+                    else
                     {
-                        Console.WriteLine($"exception {e}");
-                        Console.WriteLine("Press Enter to continue");
-                        Console.ReadLine(); Console.Clear();
+                        {
+                            Console.WriteLine("Press Enter to continue");
+                            Console.ReadLine(); Console.Clear();
+                        }
                     }
-                    
                 }
             }
         }

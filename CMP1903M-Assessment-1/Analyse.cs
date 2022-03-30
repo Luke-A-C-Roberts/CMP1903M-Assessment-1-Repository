@@ -52,7 +52,7 @@ namespace CMP1903M_Assessment_1
 
         public List<LQ> AnalyseLetters(string input)
         {
-
+            //creats set of all letters within the text
             HashSet<char> letterSet = new HashSet<char> ();
             foreach (char character in input)
             {
@@ -62,26 +62,29 @@ namespace CMP1903M_Assessment_1
                 }
             }
 
+            //converts set to list and then sorts the list alphabetically
             List<char> letterList = new List<char> ();
             letterList = letterSet.ToList();
             letterList.Sort();
 
+            //creats list used for counting the number of letters
             List<int> letterAmmountList = new List<int> ();
 
+            //converts the text into an array of characters which is used for counting
             List<char> inputCharacters = new List<char>();
             inputCharacters = input.ToCharArray().ToList<char>();
 
-            int characterCount = default;
-
+            //goes through each letter in the list of characters and counts how many in the character list
             foreach (char character in letterList)
             {
-                characterCount = inputCharacters.Count(s => s == character);
-                letterAmmountList.Add(characterCount);
+                letterAmmountList.Add(inputCharacters.Count(s => s == character));
             }
 
+            //list quantities struct list used to bind the quantities of letters to the character for sorting
             List<LQ> lqs = new List<LQ>();
             LQ tempLQ = new LQ();
 
+            //both letter ammounts and letters from list added to letter quantity list
             for (int i = 0; i < letterList.Count; i++)
             {
                 tempLQ.quantity = letterAmmountList[i];
@@ -89,8 +92,10 @@ namespace CMP1903M_Assessment_1
                 lqs.Add(tempLQ);
             }
 
+            //resets temp letter quantity struct
             tempLQ = new LQ();
 
+            //bubble sort of letter quantities using letter quantity structs to keep the character and ammount parallel
             bool doSortLoop = true;
             while (doSortLoop == true)
             {

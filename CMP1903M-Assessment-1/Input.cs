@@ -65,6 +65,7 @@ namespace CMP1903M_Assessment_1
 
                     }
 
+                    // checks if the sentence ends in * (if so it breaks while loop)
                     if (tempSentence.EndsWith("*"))
                     {
                         contiueLoop = false;
@@ -73,6 +74,8 @@ namespace CMP1903M_Assessment_1
                     }
                 }
             }
+
+            //if the text doesnt end in .*, !* or ?* then .* is automatically added to the end
             if (!(tempText.EndsWith(".*") || tempText.EndsWith("!*") || tempText.EndsWith("?*")))
             {
                 tempText = tempText.Remove(tempText.Length - 1) + ".*"; 
@@ -86,10 +89,9 @@ namespace CMP1903M_Assessment_1
         //Gets text input from a .txt file
         public void fileTextInput()
         {
-            bool hasFoundFile = false;
             string fileName = "";
 
-            while (hasFoundFile == false)
+            while (true)
             {
                 Console.Write("Enter full path of the .txt file\n> ");
                 // Converting null literal or possible null value to non-nullable type.
@@ -98,16 +100,18 @@ namespace CMP1903M_Assessment_1
 #pragma warning restore CS8600
                 // Dereference of a possibly null reference.
 #pragma warning disable CS8602
+                //checks if the file exists
                 if (System.IO.File.Exists(fileName) == true
                     && fileName.EndsWith(".txt") == true)
                 {
+                    //asks for users consent
                     Console.Write("Are you sure you want to use this file [y/n]? ");
                     if (Console.ReadLine() != "n")
                     {
-                        hasFoundFile = true;
                         text = System.IO.File.ReadAllText(fileName) + "*";
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine(); Console.Clear();
+                        break;
                     }
                     else
                     {
