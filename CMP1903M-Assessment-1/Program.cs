@@ -13,6 +13,7 @@ namespace CMP1903M_Assessment_1
         {
             List<int> parameters = new List<int>();
             List<LQ> lqs = new List<LQ>();
+            List<string> longWords = new List<string>();
 
             Input inputObject = new Input();
 
@@ -51,9 +52,10 @@ namespace CMP1903M_Assessment_1
             Analyse analysis = new Analyse();
             parameters = analysis.AnalyseText(inputObject.text);
             lqs = analysis.AnalyseLetters(inputObject.text);
+            longWords = analysis.LongWords(inputObject.text);
             
             Report report = new Report();
-            report.sentanceStatisticsOutput(inputObject.text, parameters, lqs);
+            report.sentanceStatisticsOutput(inputObject.text, parameters, lqs, longWords);
         }
     }
 }

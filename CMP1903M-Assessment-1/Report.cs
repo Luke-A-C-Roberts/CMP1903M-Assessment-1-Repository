@@ -8,7 +8,7 @@ namespace CMP1903M_Assessment_1
 {
     public class Report
     {
-        public void sentanceStatisticsOutput(string text, List<int> values, List<LQ> lqs)
+        public void sentanceStatisticsOutput(string text, List<int> values, List<LQ> lqs, List<string> longWords)
         {
 
             // creates output string
@@ -23,12 +23,19 @@ namespace CMP1903M_Assessment_1
                 $"Consonants:\t\t{values[2]}\n" +
                 $"Upper Case:\t\t{values[3]}\n" +
                 $"Lower Case:\t\t{values[4]}" +
-                "\n\n*Doesn't include punctuation or whitespaces between words.\n";
+                "\n\n*Doesn't include punctuation or whitespaces between words." +
+                "\n\n-character frequencies-\n\n";
 
             // goes through each letter in the letter quantitiy list and adds to output string
             foreach (LQ lq in lqs)
             {
                 outputString += $"{lq.quantity}: {lq.letter}\n";
+            }
+
+            outputString += "\n-long words-\n";
+            foreach (string s in longWords)
+            {
+                outputString += $"{s.Length}: {s}\n";
             }
 
             // choice between file and console output
@@ -74,7 +81,9 @@ namespace CMP1903M_Assessment_1
                     {
                         try
                         {
+#pragma warning disable CS8604 // Possible null reference argument.
                             System.IO.File.WriteAllText(path, outputString);
+#pragma warning restore CS8604 // Possible null reference argument.
                             break;
                         }
                         catch (System.IO.IOException e)

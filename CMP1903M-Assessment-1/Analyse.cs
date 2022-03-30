@@ -14,7 +14,7 @@ namespace CMP1903M_Assessment_1
         //Arguments: string
         //Returns: list of integers
         //Calculates and returns an analysis of the text
-        readonly char[] vowels = { 'a', 'i', 'u', 'e', 'o' };
+
 
         List<int> values = new List<int>();
         public Analyse()
@@ -24,6 +24,8 @@ namespace CMP1903M_Assessment_1
         }
         public List<int> AnalyseText(string input)
         {
+            char[] vowels = { 'a', 'i', 'u', 'e', 'o' };
+
             //List of integers to hold the first five measurements:
             //1. Number of sentences
             //2. Number of vowels
@@ -95,7 +97,7 @@ namespace CMP1903M_Assessment_1
             //resets temp letter quantity struct
             tempLQ = new LQ();
 
-            //bubble sort of letter quantities using letter quantity structs to keep the character and ammount parallel
+            //bubble sort of letter quantities using letter quantity structs to keep the character and amount parallel
             bool doSortLoop = true;
             while (doSortLoop == true)
             {
@@ -113,6 +115,68 @@ namespace CMP1903M_Assessment_1
             }
 
             return lqs;
+        }
+
+        public List<string> LongWords(string input)
+        {
+            char[] punctuation = {'.', '!', '?'};
+
+            //converts input to char list
+            List<char> tempCharList = input.ToCharArray().ToList();
+
+            //removes punctuation
+            tempCharList.RemoveAt(tempCharList.Count - 1);
+            for (int i = 0; i < tempCharList.Count; i++)
+            {
+                if (punctuation.Contains(tempCharList[i]))
+                {
+                    tempCharList.RemoveAt(i);
+                }
+            }
+
+            //splits text into words using ' ' as a seperator character
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+            string text = new string(tempCharList.ToArray());
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            List<string> words = text.Split(' ').ToList();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
+            List<string> longWords = new List<string>();
+
+            //finds all of the long words (>= 7 characters) and puts into longWords list
+            foreach (string s in words)
+            {
+                if (s.Length >= 7)
+                {
+                    longWords.Add(s.ToLower());
+                }
+            }
+
+            //sorts LongWords alphabetically and removes duplicates
+            longWords = longWords.ToHashSet().ToList();
+            longWords.Sort();
+
+            //bubble sorts strings by length
+            string tempLongWord = string.Empty;
+            bool doSortLoop = true;
+            while (doSortLoop == true)
+            {
+                doSortLoop = false;
+                for (int i = 0; i < (longWords.Count - 1); i++)
+                {
+                    if (longWords[i].Length < longWords[i].Length)
+                    {
+                        tempLongWord = longWords[i];
+                        longWords[i] = longWords[i + 1];
+                        longWords[i + 1] = tempLongWord;
+                        doSortLoop = true;
+                    }
+                }
+            }
+
+            return longWords;
         }
     }
 }

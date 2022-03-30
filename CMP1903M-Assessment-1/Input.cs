@@ -66,12 +66,14 @@ namespace CMP1903M_Assessment_1
                     }
 
                     // checks if the sentence ends in * (if so it breaks while loop)
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     if (tempSentence.EndsWith("*"))
                     {
                         contiueLoop = false;
                         Console.WriteLine("Press Enter to continue");
                         Console.ReadLine(); Console.Clear();
                     }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 }
             }
 
