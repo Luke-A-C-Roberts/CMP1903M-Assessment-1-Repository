@@ -8,11 +8,10 @@ namespace CMP1903M_Assessment_1
 {
     public class Report
     {
-        //Handles the reporting of the analysis
-        //Maybe have different methods for different formats of output?
-        //eg.   public void outputConsole(List<int>)
         public void sentanceStatisticsOutput(string text, List<int> values, List<LQ> lqs)
         {
+
+            // creates output string
             string outputString = string.Empty;
 
             outputString =
@@ -26,28 +25,60 @@ namespace CMP1903M_Assessment_1
                 $"Lower Case:\t\t{values[4]}" +
                 "\n\n*Doesn't include punctuation or whitespaces between words.\n";
 
+            // goes through each letter in the letter quantitiy list and adds to output string
             foreach (LQ lq in lqs)
             {
                 outputString += $"{lq.quantity}: {lq.letter}\n";
             }
 
-            Console.WriteLine("do you want to out put to: [text file/console]");
+            // choice between file and console output
+            Console.WriteLine("do you want to out put to: [file/console]");
             string choice = string.Empty;
+            // loops untill choice is either console or file
             while (true)
             {
+                Console.Write("> ");
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 choice = Console.ReadLine();
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-                if (choice == "console")
+                if (choice == "console" || choice == "file")
                 {
-                    Console.WriteLine(choice);
                     break;
                 }
-                else if (choice == "file")
+                else
                 {
-                    string path = string.Empty;
-                    System.IO.File.WriteAllText(path, outputString);
-                    break;
+                    Console.WriteLine("Please re-enter choice");
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine(); Console.Clear();
+                }
+            }
+            //outputs to either the console or to a file with specified path
+            if (choice == "console")
+            {
+                Console.WriteLine(outputString);
+            }
+            else if (choice == "file")
+            {
+                string path = string.Empty;
+                while (true)
+                {
+                    Console.WriteLine("where would you like to output to?");
+                    Console.Write("> ");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                    path = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                    try
+                    {
+                        System.IO.File.WriteAllText(path, outputString);
+                        break;
+                    }
+                    catch (System.IO.IOException e)
+                    {
+                        Console.WriteLine($"exception {e}");
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadLine(); Console.Clear();
+                    }
+                    
                 }
             }
         }

@@ -20,12 +20,12 @@ namespace CMP1903M_Assessment_1
             string tempText = "";
             string tempSentence = "";
             bool contiueLoop = true;
-            Console.WriteLine("Please enter text\n" +
-                "if you have finished entering sentences end with \"*\" character");
+
+            // loops through
+            Console.WriteLine("Please enter text\n if you have finished entering sentences end with \"*\" character");
             while (contiueLoop == true)
             {
-
-                Console.Write(">");
+                Console.Write("> ");
 
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 tempSentence = Console.ReadLine();
@@ -34,6 +34,7 @@ namespace CMP1903M_Assessment_1
                 Console.Write("");
                 if (!(tempSentence == "" && tempSentence == null))
                 {
+                    // ends the loop if the sentence is *
                     if (tempSentence == "*")
                     {
                         tempText += tempSentence;
@@ -43,6 +44,8 @@ namespace CMP1903M_Assessment_1
                     }
                     else
                     {
+
+                        // makes sure that the sentances are punctuated correctly
                         if (tempText.EndsWith(". ") || tempText.EndsWith("! ") || tempText.EndsWith("? "))
                         {
                             tempText += tempSentence;

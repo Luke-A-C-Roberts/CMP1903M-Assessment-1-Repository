@@ -66,12 +66,6 @@ namespace CMP1903M_Assessment_1
             letterList = letterSet.ToList();
             letterList.Sort();
 
-            foreach(char l in letterSet)
-            {
-                Console.Write($"{l}, ");
-            }
-            Console.WriteLine();
-
             List<int> letterAmmountList = new List<int> ();
 
             List<char> inputCharacters = new List<char>();
