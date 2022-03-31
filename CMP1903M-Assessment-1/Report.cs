@@ -103,5 +103,14 @@ namespace CMP1903M_Assessment_1
                 }
             }
         }
+        public void CompareAgainstTestFileOutput(string text, List<int> values)
+        {
+            Console.WriteLine($"{text}\n\n");
+            Console.WriteLine($"the expected number of sentences is 6: outputted {values[0]}");
+            Console.WriteLine($"the expected number of characters is 506: outputted {values[5]}");
+            Console.WriteLine($"the expected number of vowels is 189: outputted {values[1]}");
+            Console.WriteLine($"the expected number of upper case is 9: outputted {values[3]}");
+            Console.WriteLine($"the expected number of lower case is 497: outputted {values[4]}");
+        }
     }
 }
