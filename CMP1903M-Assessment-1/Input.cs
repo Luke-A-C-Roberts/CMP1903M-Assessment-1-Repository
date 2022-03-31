@@ -6,16 +6,29 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_Assessment_1
 {
-    public class Input
+    //abstraction of input holds variables
+    public abstract class AbstractInput
     {
-        //Handles the text input for Assessment 1
-        internal string text = "";
-        internal int sentenceNumber = 0;
-        //Method: manualTextInput
-        //Arguments: none
-        //Returns: string
-        //Gets text input from the keyboard
-        public string manualTextInput()
+        private string _text = String.Empty;
+        private int _sentenceNumber = default;
+        //encapsulation of text and sentence number
+        public string text
+        {
+            get { return _text; }
+            set { _text = value; }
+        }
+
+        public int sentenceNumber
+        {
+            get { return _sentenceNumber; }
+            set { _sentenceNumber = value; }
+        }
+    }
+
+    // creation of Input from Abstract input
+    public class Input : AbstractInput
+    {
+        public void manualTextInput()
         {
             string tempText = "";
             string tempSentence = "";
@@ -25,7 +38,7 @@ namespace CMP1903M_Assessment_1
             Console.WriteLine("Please enter text\n if you have finished entering sentences end with \"*\" character");
             while (contiueLoop == true)
             {
-                Console.Write("> ");
+                Console.Write(">");
 
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 tempSentence = Console.ReadLine();
@@ -62,7 +75,7 @@ namespace CMP1903M_Assessment_1
                         {
                             tempText += tempSentence;
                         }
-
+                        sentenceNumber++;
                     }
 
                     // checks if the sentence ends in * (if so it breaks while loop)
@@ -83,7 +96,6 @@ namespace CMP1903M_Assessment_1
                 tempText = tempText.Remove(tempText.Length - 1) + ".*"; 
             }
             text = tempText;
-            return tempText;
         }
         //Method: fileTextInput
         //Arguments: string (the file path)
@@ -130,6 +142,16 @@ namespace CMP1903M_Assessment_1
                 }
 #pragma warning restore CS8602
             }
+        }
+        public void CompareAgainstTestFileInput()
+        {
+            text = "Object Oriented programming is a programming paradigm that relies on the concept of classes and objects." +
+                "  A class is an abstract blueprint used to create more specific, concrete objects." +
+                " Classes often represent broad categories, like Car or Dog that share attributes." +
+                " These classes define what attributes an instance of this type will have, like colour," +
+                " but not the value of those attributes for a specific object. Classes can also contain functions," +
+                " called methods available only to objects of that type. These functions are defined within the class" +
+                " and perform some action helpful to that specific type of object.*";
         }
     }
 }
