@@ -9,12 +9,25 @@ namespace CMP1903M_Assessment_1
     public class Input
     {
         //Handles the text input for Assessment 1
-        internal string text = "";
-        internal int sentenceNumber = 0;
+        private string _text = "";
+        private int _sentenceNumber = 0;
         //Method: manualTextInput
         //Arguments: none
         //Returns: string
         //Gets text input from the keyboard
+
+        public string text
+        {
+            get { return _text; }
+            set { _text = value; }
+        }
+
+        public int sentenceNumber
+        {
+            get { return _sentenceNumber; }
+            set { _sentenceNumber = value; }
+        }
+
         public string manualTextInput()
         {
             string tempText = "";

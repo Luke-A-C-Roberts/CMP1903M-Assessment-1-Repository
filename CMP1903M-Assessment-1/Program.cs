@@ -11,6 +11,7 @@ namespace CMP1903M_Assessment_1
     {
         static void Main()
         {
+            //lists of data used for report
             List<int> parameters = new List<int>();
             List<LQ> lqs = new List<LQ>();
             List<string> longWords = new List<string>();
@@ -49,11 +50,13 @@ namespace CMP1903M_Assessment_1
                 inputObject.fileTextInput();
             }
 
+            //creates analysis object and undergoes subroutines
             Analyse analysis = new Analyse();
             parameters = analysis.AnalyseText(inputObject.text);
             lqs = analysis.AnalyseLetters(inputObject.text);
             longWords = analysis.LongWords(inputObject.text);
             
+            //report
             Report report = new Report();
             report.sentanceStatisticsOutput(inputObject.text, parameters, lqs, longWords);
         }

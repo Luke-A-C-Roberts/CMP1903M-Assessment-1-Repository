@@ -74,7 +74,7 @@ namespace CMP1903M_Assessment_1
 
             //converts the text into an array of characters which is used for counting
             List<char> inputCharacters = new List<char>();
-            inputCharacters = input.ToCharArray().ToList<char>();
+            inputCharacters = input.ToLower().ToCharArray().ToList<char>();
 
             //goes through each letter in the list of characters and counts how many in the character list
             foreach (char character in letterList)
